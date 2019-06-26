@@ -11,12 +11,12 @@ readonly TMP_DOWNLOAD_DIR="$(mktemp -d)"
 trap 'rm -rf "${TMP_DOWNLOAD_DIR?}"' EXIT
 
 #
-function error_exit {
+error_exit() {
   echo "$1" >&2
   exit "${2:-1}"
 }
 
-function install {
+install() {
   local -r install_type="$1"
   local -r install_version="$2"
   local -r install_path="$3"
