@@ -1,0 +1,15 @@
+variables:
+- group: GitHub
+
+jobs:
+- job: Linux
+  pool:
+    vmImage: ubuntu-16.04
+  steps:
+  - template: azure-pipelines-steps.yml
+
+- job: macOS
+  pool:
+    vmImage: macOS-10.14
+  steps:
+  - template: azure-pipelines-steps.yml
