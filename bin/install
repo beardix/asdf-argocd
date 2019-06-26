@@ -31,7 +31,7 @@ install() {
   if curl -fL -o "$download_path" "$download_url"; then
     echo "Installing binary"
     mkdir -p "$install_path_bin"
-    cp "$download_path" "${install_path_bin}/${BINARY_NAME}"
+    mv "$download_path" "${install_path_bin}/${BINARY_NAME}"
     chmod +x "${install_path_bin}/${BINARY_NAME}"
   else
     error_exit "Error: ${BINARY_NAME} version ${install_version} not found"
