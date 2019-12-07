@@ -1,8 +1,0 @@
-steps:
-- bash: |
-    git clone https://github.com/asdf-vm/asdf.git
-    . asdf/asdf.sh
-    asdf plugin-test argocd . 'argocd version --client'
-  displayName: asdf plugin-test
-  env:
-    GITHUB_API_TOKEN: $(GitHub.APIToken)
