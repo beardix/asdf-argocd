@@ -13,14 +13,17 @@ on:
 jobs:
   plugin_test:
     strategy:
+      fail-fast: false
       matrix:
-        os: [macOS-latest, ubuntu-latest]
+        os:
+          - macos-latest
+          - ubuntu-latest
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: asdf_plugin_test
-        uses: asdf-vm/actions/plugin-test@v1.0.0
+      - name: Test plugin
+        uses: asdf-vm/actions/plugin-test@v1
         with:
           command: argocd version --client
         env:
