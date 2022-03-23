@@ -21,7 +21,13 @@ install() {
   local -r install_version="$2"
   local -r install_path="$3"
   local -r install_path_bin="${install_path}/bin"
-  local -r platform="$(uname | tr '[:upper:]' '[:lower:]')-amd64"
+  arch=$(uname -m)
+  case $arch in
+    arm64) arch="arm64";; # m1 macs
+    aarch64) arch="arm64";;
+    *) arch="amd64";;
+  esac
+  local -r platform="$(uname | tr '[:upper:]' '[:lower:]')-${arch}"
   local -r download_url="${DOWNLOAD_BASE_URL}/v${install_version}/${BINARY_NAME}-${platform}"
   local -r download_path="${TMP_DOWNLOAD_DIR}/${BINARY_NAME}"
 
